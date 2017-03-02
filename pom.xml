@@ -36,7 +36,6 @@
         <module>multimod-mod1</module>
         <module>multimod-mod2</module>
         <module>multimod-mod3</module>
-        <!--<module>reportmodule</module>-->
     </modules>
 
     <dependencyManagement>

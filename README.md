@@ -7,13 +7,13 @@ sonarqube on port 9000.
 Once sonarqube is running do `mvn clean verify sonar:sonar` to run tests with jacoco coverage.  
 The metrics will upload to the local sonarqube: [http://localhost:9000/projects](http://localhost:9000/projects)
 
-![Image of Yaktocat](sonarqube-project.png)
+![Project in Sonarqube](sonarqube-project.png)
 
 What we want to achieve in this project is that we can detect coverage even if we have a test
 in module 3 which covers code in module 1 for example.
 
-Module  | Coverage
------------- | -------------
+ Module        | Coverage
+-------------- | -------------
  multimod-mod1 | 100%
  multimod-mod2 | 100%
 

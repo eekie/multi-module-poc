@@ -9,25 +9,14 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <prerequisites>
-       <maven>3.3.9</maven>
-    </prerequisites>
-
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- Sonar -->
-        <!-- The destination file for the code coverage report has to be set to the same value
-             in the parent pom and in each module pom. Then JaCoCo will add up information in
-             the same report, so that, it will give the cross-module code coverage. -->
-        <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
-        <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-        <sonar.surefire.reportsPath>${project.basedir}/../target/surefire-reports</sonar.surefire.reportsPath>
+        <sonar.jacoco.reportPaths>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPaths>
+        <sonar.junit.reportsPath>${project.basedir}/../target/surefire-reports</sonar.junit.reportsPath>
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-        <sonar.language>java</sonar.language>
-        <sonar.language>java</sonar.language>
         <sonar-maven-plugin.version>3.2</sonar-maven-plugin.version>
 
     </properties>
@@ -61,7 +50,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.19.1</version>
                 <configuration>
-                    <reportsDirectory>${sonar.surefire.reportsPath}</reportsDirectory>
+                    <reportsDirectory>${sonar.junit.reportsPath}</reportsDirectory>
                     <excludes>
                         <exclude>**/**IT.java</exclude>
                     </excludes>
@@ -83,7 +72,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <reportsDirectory>${sonar.surefire.reportsPath}</reportsDirectory>
+                    <reportsDirectory>${sonar.junit.reportsPath}</reportsDirectory>
                     <includes>
                         <include>**/*IT.java</include>
                     </includes>
@@ -108,7 +97,7 @@
                         </goals>
                         <configuration>
                             <propertyName>surefireArgLine</propertyName>
-                            <destFile>${sonar.jacoco.reportPath}</destFile>
+                            <destFile>${sonar.jacoco.reportPaths}</destFile>
                             <append>true</append>
                         </configuration>
                     </execution>
@@ -119,7 +108,7 @@
                         </goals>
                         <configuration>
                             <propertyName>failsafeArgLine</propertyName>
-                            <destFile>${sonar.jacoco.itReportPath}</destFile>
+                            <destFile>${sonar.jacoco.reportPaths}</destFile>
                             <append>true</append>
                         </configuration>
                     </execution>
